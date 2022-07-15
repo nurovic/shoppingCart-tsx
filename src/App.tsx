@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route} from "react-router-dom"
 import { Container } from "react-bootstrap"
 import Navbar from './components/Navbar';
 import Home from './pages/Home'
-import ItemDetail from "./pages/ItemDetail";
+import ProductDetail from "./pages/ProductDetail";
 
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Container className="mb-4">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/item/:id" element={<ItemDetail />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
         </Routes>
       </Container>
       </BrowserRouter>
