@@ -1,40 +1,19 @@
 import { Col, Row } from "react-bootstrap"
-import React,{useEffect, useState} from "react"
-import axios from "axios"
-import StoreItems from "../components/StoreItem"
-
-export type CartItemType = {
-  id: number;
-  category: string;
-  description: string;
-  image: string;
-  price: number;
-  title: string;
-  amount: number;
-};
+import {StoreItem} from "../components/StoreItem"
+import storeItems from '../data/items.json'
 
 const Home = () => {
-  const[ itemData, setItemData] = useState<CartItemType[]>([])
 
-  const getData = async () => {
-    const getData = await axios.get<CartItemType[]>("https://fakestoreapi.com/products")
-    setItemData(getData.data)
-  }
-
-  useEffect(() => {
-    getData()
-  }, [itemData])
   return (
     <>
-    <Row md={2} xs={1} lg={3} className="g-3">
-      {
-        itemData.map(item => ( 
+      <h1>Store</h1>
+      <Row md={2} xs={1} lg={3} className="g-3">
+        {storeItems.map(item => (
           <Col key={item.id}>
-            <StoreItems {...item} />
+            <StoreItem {...item} />
           </Col>
-        ))
-      }
-    </Row>
+        ))}
+      </Row>
     </>
   )
 }
